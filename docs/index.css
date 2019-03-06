@@ -1,0 +1,33 @@
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.charlist {
+    width: 900px;
+    //border: 1px solid black;
+}
+
+.charrow {
+    //border: 1px solid green;
+}
+
+.charrow:hover {
+    background-color: lightskyblue !important;
+}
+
+.charrow:nth-child(even) {
+    //background-color: lemonchiffon;
+}
+
+.charrow.hasTenPlus {
+    background-color: lightgreen;
+}
+
+.headerrow {
+    font-weight: bold;
+    border-bottom: 2px solid black;
+    //text-align: center;
+
+}
