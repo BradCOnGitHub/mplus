@@ -35,6 +35,7 @@
                 }
                 levelCell.text('+' + bestRun.mythic_level)
                 dungeonCell.text(bestRun.dungeon);
+                timestampCell.text(bestRun.completed_at);
             }
         );
     }
