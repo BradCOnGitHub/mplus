@@ -1,33 +1,41 @@
 
-.center {
-    display: flex;
-    justify-content: center;
+
+@media only screen and (max-width: 768px) {
+    .headerrow, .timestampCell {
+        display: none;
+    }
+
+    .charNameCell {
+        font-weight: bold;
+    }
+
 }
 
-.charlist {
-    width: 900px;
-    //border: 1px solid black;
-}
+@media all {
+    .center {
+        display: flex;
+        justify-content: center;
+    }
 
-.charrow {
-    //border: 1px solid green;
-}
+    .charlist {
+        width: 80%;
+    }
 
-.charrow:hover {
-    background-color: lightskyblue !important;
-}
+    .charrow {
+        margin-bottom: 1px;
+    }
 
-.charrow:nth-child(even) {
-    //background-color: lemonchiffon;
-}
+    .charrow:hover {
+        background-color: lightskyblue !important;
+    }
 
-.charrow.hasTenPlus {
-    background-color: lightgreen;
-}
 
-.headerrow {
-    font-weight: bold;
-    border-bottom: 2px solid black;
-    //text-align: center;
+    .charrow.hasTenPlus {
+        background-color: lightgreen;
+    }
 
+    .headerrow {
+        font-weight: bold;
+        border-bottom: 2px solid black;
+    }
 }

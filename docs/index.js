@@ -4,10 +4,10 @@
 
         var row = $('<div>').addClass('pure-u-1').addClass('charrow').appendTo(table);
 
-        $('<div>').addClass('pure-u-5-24').text(charName).appendTo(row);
-        var levelCell = $('<div>').addClass('pure-u-1-24').appendTo(row);
-        var dungeonCell = $('<div>').addClass('pure-u-11-24').appendTo(row);
-        var timestampCell = $('<div>').addClass('pure-u-7-24').appendTo(row);
+        $('<div>').addClass('pure-u-1 pure-u-md-5-24 charNameCell').text(charName).appendTo(row);
+        var levelCell = $('<div>').addClass('pure-u-4-24 pure-u-md-1-24 levelCell').appendTo(row);
+        var dungeonCell = $('<div>').addClass('pure-u-20-24 pure-u-md-11-24').appendTo(row);
+        var timestampCell = $('<div>').addClass('pure-u-1 pure-u-md-7-24 timestampCell').appendTo(row);
 
         $.ajax({
             url: 'https://raider.io/api/v1/characters/profile?region=us&realm=stormrage&name=' + charName + '&fields=mythic_plus_weekly_highest_level_runs',
