@@ -35,7 +35,13 @@
                 }
                 levelCell.text('[' + bestRun.mythic_level + ']')
                 dungeonCell.text(bestRun.dungeon);
-                timestampCell.text(bestRun.completed_at);
+                timestampCell.text(new Date(bestRun.completed_at).toLocaleString('en-US', { 
+                    timeZone: 'America/New_York',
+                    weekday: 'long',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    timeZoneName: 'short'
+                }));
             }
         );
     }
