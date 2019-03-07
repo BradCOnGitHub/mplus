@@ -33,7 +33,7 @@
                 if (bestRun.mythic_level >= 10) {
                     row.addClass('hasTenPlus');
                 }
-                levelCell.text('+' + bestRun.mythic_level)
+                levelCell.text('[' + bestRun.mythic_level + ']')
                 dungeonCell.text(bestRun.dungeon);
                 timestampCell.text(bestRun.completed_at);
             }
