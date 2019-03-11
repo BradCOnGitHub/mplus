@@ -73,7 +73,7 @@
         'Nexwrex',
         'Ockham',
         'Sudac',
-        'Trulore',
+        'Trulo',
         'Vahlerie',
         'Vertigen',
         'Voidkage',
