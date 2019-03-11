@@ -10,7 +10,9 @@
         var timestampCell = $('<div>').addClass('pure-u-1 pure-u-md-7-24 timestampCell').appendTo(row);
 
         $.ajax({
-            url: 'https://raider.io/api/v1/characters/profile?region=us&realm=stormrage&name=' + charName + '&fields=mythic_plus_weekly_highest_level_runs',
+            url: 'https://raider.io/api/v1/characters/profile?region=us&realm=stormrage&name=' 
+            + charName + '&fields=mythic_plus_weekly_highest_level_runs,'
+            + new Date() / 1, // this is a hack to prevent caching because cache control headers trigger CORS and their policy isn't configured
             dataType: 'json',
         }).done(
             function(data, textStatus, jqXHR) {
