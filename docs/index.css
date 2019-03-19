@@ -38,4 +38,13 @@
         font-weight: bold;
         border-bottom: 2px solid black;
     }
+
+    .charNameCell a {
+        text-decoration: none;
+    }
+
+    .charNameCell a:hover {
+        text-decoration: underline;
+    }
+
 }

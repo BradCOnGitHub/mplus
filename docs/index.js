@@ -4,7 +4,7 @@
 
         var row = $('<div>').addClass('pure-u-1').addClass('charrow').appendTo(table);
 
-        $('<div>').addClass('pure-u-1 pure-u-md-5-24 charNameCell').text(charName).appendTo(row);
+        var charNameCell = $('<div>').addClass('pure-u-1 pure-u-md-5-24 charNameCell').text(charName).appendTo(row);
         var levelCell = $('<div>').addClass('pure-u-4-24 pure-u-md-1-24 levelCell').appendTo(row);
         var dungeonCell = $('<div>').addClass('pure-u-20-24 pure-u-md-11-24').appendTo(row);
         var timestampCell = $('<div>').addClass('pure-u-1 pure-u-md-7-24 timestampCell').appendTo(row);
@@ -17,6 +17,9 @@
         }).done(
             function(data, textStatus, jqXHR) {
                 //console.log(data);
+
+                charNameCell.html('');
+                $('<a>').attr('href', data.profile_url).text(data.name).appendTo(charNameCell);
 
                 var plusRuns = data.mythic_plus_weekly_highest_level_runs;
 
@@ -35,6 +38,7 @@
                 if (bestRun.mythic_level >= 10) {
                     row.addClass('hasTenPlus');
                 }
+
                 levelCell.text('[' + bestRun.mythic_level + ']')
                 dungeonCell.text(bestRun.dungeon);
                 timestampCell.text(new Date(bestRun.completed_at).toLocaleString('en-US', { 
