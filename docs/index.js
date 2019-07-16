@@ -66,7 +66,7 @@
         'Thusia',
         'Tiggie',
         'Uthion',
-        'Illarapreist',
+        'Illarapriest',
         'Malhavoc',
         'Ceszary',
         'Kko',
