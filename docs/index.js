@@ -9,9 +9,17 @@
         var dungeonCell = $('<div>').addClass('pure-u-20-24 pure-u-md-11-24').appendTo(row);
         var timestampCell = $('<div>').addClass('pure-u-1 pure-u-md-7-24 timestampCell').appendTo(row);
 
+        var serverName = "Stormrage";
+        if (charName.indexOf('-') > 0) {
+            var parts = charName.split('-');
+            var charName = parts[0];
+            serverName = parts[1].split("'").join('');
+        }
+
         $.ajax({
-            url: 'https://raider.io/api/v1/characters/profile?region=us&realm=stormrage&name=' 
-            + charName + '&fields=mythic_plus_weekly_highest_level_runs,'
+            url: 'https://raider.io/api/v1/characters/profile?region=us&realm=' + serverName 
+            + '&name=' + charName 
+            + '&fields=mythic_plus_weekly_highest_level_runs,'
             + new Date() / 1, // this is a hack to prevent caching because cache control headers trigger CORS and their policy isn't configured
             dataType: 'json',
         }).done(
@@ -19,7 +27,12 @@
                 //console.log(data);
 
                 charNameCell.html('');
-                $('<a>').attr('href', data.profile_url).text(data.name).appendTo(charNameCell);
+                var charName = data.name;
+                if (data.realm != 'Stormrage'){
+                    charName += '-' + data.realm;
+                }
+                $('<a>').attr('href', data.profile_url).text(charName).appendTo(charNameCell);
+
 
                 var plusRuns = data.mythic_plus_weekly_highest_level_runs;
 
@@ -75,7 +88,11 @@
         'Sudac',
         'Trulo',
         'Vertigen',
-        '',
+        "Forcelimitz-Kel'Thuzad",
+        "Karcxus-Kel'Thuzad",        
+        "Greatdragoon-Kel'Thuzad",        
+        "Reckognise-Kel'Thuzad",        
+        "",
         '',
     ]
 
