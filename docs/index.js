@@ -87,6 +87,7 @@
         'Ockham',
         'Sudac',
         'Trulo',
+        'Trulos',
         'Vertigen',
         "Forcelimitz-Kel'Thuzad",
         "Karcxus-Kel'Thuzad",        
