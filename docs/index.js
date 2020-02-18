@@ -48,8 +48,12 @@
                 if (plusRuns.length > 2 && plusRuns[2].mythic_level > bestRun){
                     bestRun = plusRuns[2];
                 }
-                if (bestRun.mythic_level >= 10) {
-                    row.addClass('hasTenPlus');
+                if (bestRun.mythic_level >= 15) {
+                    row.addClass('has-15');
+                } else if (bestRun.mythic_level >= 12) {
+                    row.addClass('has-12');
+                } else if (bestRun.mythic_level >= 10) {
+                    row.addClass('has-10');
                 }
 
                 levelCell.text('[' + bestRun.mythic_level + ']')
