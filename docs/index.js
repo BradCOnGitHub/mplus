@@ -6,8 +6,9 @@
 
         var charNameCell = $('<div>').addClass('pure-u-1 pure-u-md-5-24 charNameCell').text(charName).appendTo(row);
         var levelCell = $('<div>').addClass('pure-u-4-24 pure-u-md-1-24 levelCell').appendTo(row);
-        var dungeonCell = $('<div>').addClass('pure-u-20-24 pure-u-md-11-24').appendTo(row);
+        var dungeonCell = $('<div>').addClass('pure-u-20-24 pure-u-md-9-24').appendTo(row);
         var timestampCell = $('<div>').addClass('pure-u-1 pure-u-md-7-24 timestampCell').appendTo(row);
+        var cloakLevelCell = $('<div>').addClass('pure-u-1 pure-u-md-2-24 cloak-level-cell').appendTo(row);
 
         var serverName = "Stormrage";
         if (charName.indexOf('-') > 0) {
@@ -19,7 +20,7 @@
         $.ajax({
             url: 'https://raider.io/api/v1/characters/profile?region=us&realm=' + serverName 
             + '&name=' + charName 
-            + '&fields=mythic_plus_weekly_highest_level_runs,'
+            + '&fields=mythic_plus_weekly_highest_level_runs,gear,'
             + new Date() / 1, // this is a hack to prevent caching because cache control headers trigger CORS and their policy isn't configured
             dataType: 'json',
         }).done(
@@ -33,6 +34,7 @@
                 }
                 $('<a>').attr('href', data.profile_url).text(charName).appendTo(charNameCell);
 
+                cloakLevelCell.text(data.gear.corruption.cloakRank);
 
                 var plusRuns = data.mythic_plus_weekly_highest_level_runs;
 
@@ -104,8 +106,9 @@
         var headerRow = $('<div>').addClass('pure-u-1').addClass('headerrow').appendTo(charTable);
 
         $('<div>').addClass('pure-u-5-24').text('Character').appendTo(headerRow);
-        $('<div>').addClass('pure-u-12-24').text('Best Dungeon').appendTo(headerRow);
+        $('<div>').addClass('pure-u-10-24').text('Best Dungeon').appendTo(headerRow);
         $('<div>').addClass('pure-u-7-24').text('Timestamp').appendTo(headerRow);
+        $('<div>').addClass('pure-u-2-24').text('Cloak').appendTo(headerRow);
 
         chars.sort();
 
