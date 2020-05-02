@@ -137,13 +137,14 @@
                 let dungeonMap = {}
                 $.each(allDungeons, function(index, value) {
                     console.log(value);
-                    dungeonMap[value] = ' ';
+                    dungeonMap[value] = 'need';
                 });
                 $.each(thisCharDungeons, function(index, value) {
-                    let text = ' ';
                     if (value.num_keystone_upgrades === 0 || value.mythic_level < 15) {
                         dungeonMap[value.short_name] = 'need';
                         row.removeClass('has-15');
+                    } else {
+                        dungeonMap[value.short_name] = ' ';
                     }
                 });
                 $.each(allDungeons, function(index, value) {
