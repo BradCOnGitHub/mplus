@@ -98,6 +98,55 @@
         'Uthion',
     ]
 
+    var metaChars = [
+        'Asceline',
+        'Chao',
+        'Drulic',
+        'Elita',
+        'Felshady',
+        'Marta',
+        'Nexterminate',
+        'Ockham',
+        'Sudac',
+        'Thusia',
+        'Tiggie',
+        'Trulo',
+        'Uthion',
+    ]    
+
+    function doMetaCheck(charName, table){
+        var row = $('<div>').addClass('pure-u-1').addClass('charrow').appendTo(table);
+        let serverName = "Stormrage";
+        $.ajax({
+            url: 'https://raider.io/api/v1/characters/profile?region=us&realm=' + serverName 
+            + '&name=' + charName 
+            + '&fields=mythic_plus_best_runs:all,'
+            + new Date() / 1, // this is a hack to prevent caching because cache control headers trigger CORS and their policy isn't configured
+            dataType: 'json',
+        }).done(
+            function(data, textStatus, jqXHR) {
+                // console.log(data);
+                $('<div>').addClass('pure-u-3-24').text(data.name).appendTo(row);
+                row.addClass('has-15');
+                let dungeonListRow = $('<div>').addClass('pure-u-21-24').appendTo(row);
+                let dungeonList = sortDungeons(data.mythic_plus_best_runs);
+                $.each(dungeonList, function(index, value) {
+                    let text = ' ';
+                    if (value.num_keystone_upgrades === 0 || value.mythic_level < 15) {
+                        text = 'need';
+                        row.removeClass('has-15');
+                    }
+                    $('<div>').addClass('pure-u-2-24').text(text).appendTo(dungeonListRow);
+                });
+
+            }
+        );        
+    }
+
+    function sortDungeons(list){
+        return list.sort((a, b) => (a.short_name > b.short_name) ? 1 : -1);
+    }
+
     $(function() {
 
         var charTable = $('#charlist');
@@ -110,13 +159,43 @@
         $('<div>').addClass('pure-u-7-24').text('Timestamp').appendTo(headerRow);
         $('<div>').addClass('pure-u-2-24').text('Cloak').appendTo(headerRow);
 
-        chars.sort();
+        let metaTable = $('#metalist');
+        metaTable.html('');
+        metaTable.addClass('pure-g');
+        var metaHeaderRow = $('<div>').addClass('pure-u-1').addClass('headerrow').appendTo(metaTable);
+        $.ajax({
+            url: 'https://raider.io/api/v1/characters/profile?region=us&realm=Stormrage'
+            + '&name=Neito' //just using myself because I know I'm done
+            + '&fields=mythic_plus_best_runs:all,'
+            + new Date() / 1, // this is a hack to prevent caching because cache control headers trigger CORS and their policy isn't configured
+            dataType: 'json',
+        }).done(
+            function(data, textStatus, jqXHR) {
+                $('<div>').addClass('pure-u-3-24').text('Character').appendTo(metaHeaderRow);
+                let dungeonListRow = $('<div>').addClass('pure-u-21-24').addClass('headerrow').appendTo(metaHeaderRow);
+                let dungeonList = sortDungeons(data.mythic_plus_best_runs);
+                $.each(dungeonList, function(index, value){
+                    $('<div>').addClass('pure-u-2-24').text(value.short_name).appendTo(dungeonListRow);
+                });
+            }
+        );     
 
+
+        chars.sort();
+        
         $.each(chars, function(index, value){
             if (value.length){
-                addCharToTable(value, charTable);    
+                addCharToTable(value, charTable);
             }
         });
+
+        metaChars.sort();
+
+        $.each(metaChars, function(index, value){
+            if (value.length){
+                doMetaCheck(value, metaTable);
+            }
+        });        
 
     });
 }()

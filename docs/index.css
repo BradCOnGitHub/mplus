@@ -19,6 +19,7 @@
 
     .charlist {
         width: 80%;
+        margin-bottom: 1em;
     }
 
     .charrow {
@@ -53,12 +54,11 @@
     }
 
     .wow-audit-block {
-        margin-top: 2em;
         font-size: x-small;
     }
 
     .dungeon-level-key-block {
-        margin-top: 2em;
+        margin-bottom: 1em;
         width: 40%;
     }
 }
