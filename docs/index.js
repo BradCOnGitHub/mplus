@@ -112,7 +112,9 @@
         'Tiggie',
         'Trulo',
         'Uthion',
-    ]    
+    ]
+
+    let allDungeons = [];
 
     function doMetaCheck(charName, table){
         var row = $('<div>').addClass('pure-u-1').addClass('charrow').appendTo(table);
@@ -126,19 +128,27 @@
         }).done(
             function(data, textStatus, jqXHR) {
                 // console.log(data);
-                $('<div>').addClass('pure-u-3-24').text(data.name).appendTo(row);
+                
+                var charNameCell = $('<div>').addClass('pure-u-3-24').appendTo(row);
+                $('<a>').attr('href', data.profile_url).text(data.name).appendTo(charNameCell);
                 row.addClass('has-15');
                 let dungeonListRow = $('<div>').addClass('pure-u-21-24').appendTo(row);
-                let dungeonList = sortDungeons(data.mythic_plus_best_runs);
-                $.each(dungeonList, function(index, value) {
+                let thisCharDungeons = sortDungeons(data.mythic_plus_best_runs);
+                let dungeonMap = {}
+                $.each(allDungeons, function(index, value) {
+                    console.log(value);
+                    dungeonMap[value] = ' ';
+                });
+                $.each(thisCharDungeons, function(index, value) {
                     let text = ' ';
                     if (value.num_keystone_upgrades === 0 || value.mythic_level < 15) {
-                        text = 'need';
+                        dungeonMap[value.short_name] = 'need';
                         row.removeClass('has-15');
                     }
-                    $('<div>').addClass('pure-u-2-24').text(text).appendTo(dungeonListRow);
                 });
-
+                $.each(allDungeons, function(index, value) {
+                    $('<div>').addClass('pure-u-2-24').text(dungeonMap[value]).appendTo(dungeonListRow);
+                });
             }
         );        
     }
@@ -175,6 +185,7 @@
                 let dungeonListRow = $('<div>').addClass('pure-u-21-24').addClass('headerrow').appendTo(metaHeaderRow);
                 let dungeonList = sortDungeons(data.mythic_plus_best_runs);
                 $.each(dungeonList, function(index, value){
+                    allDungeons.push(value.short_name);
                     $('<div>').addClass('pure-u-2-24').text(value.short_name).appendTo(dungeonListRow);
                 });
             }
