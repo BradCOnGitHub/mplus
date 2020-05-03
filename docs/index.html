@@ -12,18 +12,53 @@
 
     <link rel="stylesheet" href="index.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
     <script src="index.js"></script>
 
 </head>
 <body>
-    <div class="center">
-        <div id="charlist" class="charlist"></div>
-    </div>
 
-    <div class="center">
-        <div id="metalist" class="charlist"></div>
+    <div id="vue">
+        <div class="center">
+            <div class="charlist">
+                <div class="headerrow pure-u-1">
+                    <div class="pure-u-5-24">Character</div
+                    ><div class="pure-u-10-24">Best Dungeon</div
+                    ><div class="pure-u-7-24">Timestamp</div
+                    ><div class="pure-u-2-24">Cloak</div>
+                </div>
+                <div v-for="char in allChars" class="charrow pure-u-1" v-bind:class="char.bestRun.rowClass">
+                    <div class="pure-u-1 pure-u-md-5-24 charNameCell">
+                        <a v-if="char.rioData" :href="char.rioData.profile_url">{{char.fullName}}</a>
+                        <span v-else>{{char.fullName}}</span>
+                    </div
+                    ><div class="pure-u-4-24 pure-u-md-1-24 levelCell">{{char.bestRun.level ? '[' + char.bestRun.level + ']' : '' }}</div
+                    ><div class="pure-u-20-24 pure-u-md-9-24">{{char.bestRun.level ? char.bestRun.dungeon : 'NONE' }}</div
+                    ><div class="pure-u-1 pure-u-md-7-24 timestampCell">{{char.bestRun.timeStamp}}</div
+                    ><div class="pure-u-1 pure-u-md-2-24 cloak-level-cell">{{char.rioData && char.rioData.gear.corruption.cloakRank}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="center">
+            <div class="charlist pure-g">
+                <div class="pure-u-1 headerrow">
+                    <div class="pure-u-3-24">Character</div><div class="pure-u-21-24 headerrow">
+                        <div v-for="dungeon in allDungeons" class="pure-u-2-24">{{dungeon}}</div>
+                    </div>
+                </div>
+                <div v-for="char in allChars" class="pure-u-1 charrow" :class="{'has-15': !char.needsMeta}">
+                    <div class="pure-u-3-24 charNameCell">
+                        <a v-if="char.rioData" :href="char.rioData.profile_url">{{char.fullName}}</a>
+                        <span v-else>{{char.fullName}}</span>
+                    </div
+                    ><div class="pure-u-21-24"><div v-for="status in char.dungeonMap" class="pure-u-2-24">{{status}}</div></div>
+                </div>
+            </div>
+        </div>        
     </div>
 
     <div class="center">
@@ -47,5 +82,6 @@
         &nbsp;-&nbsp; 
         <a href="https://wowaudit.com/sheet/us/stormrage/order-of-chaos/main"> Spreadsheet </a>
     </div>
+
 </body>
 </html>
