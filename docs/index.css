@@ -9,6 +9,10 @@
         font-weight: bold;
     }
 
+    .dungeon-short-name:empty {
+        display: none;
+    }
+
 }
 
 @media all {
@@ -31,13 +35,13 @@
     }
 
     .charrow.has-10 {
-        background-color: lightpink;
+        background-color: lightpink !important;
     }
     .charrow.has-12 {
-        background-color: lightblue;
+        background-color: lightblue !important;
     }    
     .charrow.has-15 {
-        background-color: lightgreen;
+        background-color: lightgreen !important;
     }    
 
     .headerrow {
@@ -60,5 +64,13 @@
     .dungeon-level-key-block {
         margin-bottom: 1em;
         width: 40%;
+    }
+
+    .dungeon-short-name {
+        font-size: x-small;
+    }
+
+    .dungeon-list .charrow:nth-child(even) {
+        background-color: whitesmoke;
     }
 }

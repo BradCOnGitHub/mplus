@@ -138,7 +138,7 @@
                 }
 
                 $.each(DUNGEONS, function(i, dungeon) {
-                    vueChar.dungeonMap[dungeon] = 'need';
+                    vueChar.dungeonMap[dungeon] = dungeon;
                 });
                 vueData.allChars.push(vueChar);
                 processCharacter(vueChar);
