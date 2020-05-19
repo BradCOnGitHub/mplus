@@ -1,22 +1,14 @@
 !function() {
 
     var chars = [
-        'Ahsaka',
         'Asceline',
         'Astranyth',
         'Blargenskull',
         'Boggo',
-        // 'Cazooiee',
-        // 'Ceszary',
         'Chao',
-        // 'Curseyöu-kelthuzad',
-        // 'Deathkage',
         'Drulic',
         'Elita',
         'Felshady',
-        // 'Karctacus-kelthuzad',
-        // 'Kko',
-        // 'Marta',
         'Neito',
         'Nexwrex',
         'Ockham',
@@ -26,6 +18,12 @@
         'Trulo',
         'Uthion',
         'Nexterminate',
+        'Peppermints',
+        'Ethene',
+        'Astrælys',
+        'Eumsm',
+        'Finance',
+        'Wrokkout',
     ];
 
     const DUNGEONS = [
