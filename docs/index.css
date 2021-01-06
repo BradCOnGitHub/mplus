@@ -16,6 +16,9 @@
 }
 
 @media all {
+    
+    [v-cloak] { display: none }
+
     .center {
         display: flex;
         justify-content: center;
@@ -57,13 +60,32 @@
         text-decoration: underline;
     }
 
-    .wow-audit-block {
+    .keyCells div {
+        text-align: center;
+    }
+    .keyCells div:nth-child(-n+10) {
+        background-color: lightsalmon;
+    }
+
+    .keyCells div:nth-child(-n+4) {
+        background-color: lightblue;
+    }
+
+    .keyCells div:nth-child(1) {
+        background-color: lightgreen;
+    }
+
+
+    .info-block {
         font-size: x-small;
     }
 
     .dungeon-level-key-block {
         margin-bottom: 1em;
         width: 40%;
+    }
+    .dungeon-level-key-block div {
+        text-align: center;
     }
 
     .dungeon-short-name {

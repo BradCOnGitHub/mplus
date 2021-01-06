@@ -1,44 +1,44 @@
 !function() {
 
     var chars = [
-        'Asceline',
-        'Astranyth',
+        'Neito',
         'Blargenskull',
-        'Boggo',
+        'Ahsaka',
+        'Cezsary',
         'Chao',
         'Drulic',
         'Elita',
-        'Felshady',
-        'Neito',
-        'Nexwrex',
-        'Ockham',
+        'Kanthal',
+        'Malhavoc',
+        'Marta',
+        'Ragekage',
+        'Shadyone',
         'Sudac',
         'Thusia',
         'Tiggie',
-        'Trulo',
+        'Truwarr',
+        'Unnameable',
         'Uthion',
-        'Nexterminate',
-        'Peppermints',
-        'Ethene',
-        'Astrælys',
+        'Vahlerie',
+        'Aelo',
+        'Astranyth',
         'Eumsm',
-        'Finance',
-        'Wrokkout',
+        'Illarramvp',
+        'Kko',
+        'Nexpel',
+        'Ockham',
+        'Zypooh',
     ];
 
     const DUNGEONS = [
-        "AD",
-        "FH",
-        "KR",
-        "ML",
-        "SIEGE",
-        "SOTS",
-        "TD",
-        "TOS",
-        "UNDR",
-        "WM",
-        "WORK",
-        "YARD"
+        "TOP",
+        "MISTS",
+        "SD",
+        "NW",
+        "HOA",
+        "DOS",
+        "PF",
+        "SOA",
     ];
 
     function rioDateToWowServerDate(input){
@@ -51,60 +51,34 @@
         });
     }
 
+
     function processCharacter(vueChar) {
 
         $.ajax({
             url: 'https://raider.io/api/v1/characters/profile?region=us&realm=' + vueChar.server 
             + '&name=' + vueChar.name 
-            + '&fields=mythic_plus_weekly_highest_level_runs,gear,mythic_plus_best_runs:all,'
+            + '&fields=mythic_plus_weekly_highest_level_runs,'
+            //+ 'mythic_plus_previous_weekly_highest_level_runs,'
             + new Date() / 1, // this is a hack to prevent caching because cache control headers trigger CORS and their policy isn't configured
             dataType: 'json',
         }).done(
             function(data, textStatus, jqXHR) {
+                //data.mythic_plus_weekly_highest_level_runs = data.mythic_plus_previous_weekly_highest_level_runs;
+
+
                 vueChar.rioData = data;
                 vueChar.fullName = data.name;
-                vueChar.needsMeta = false;
                 if (data.realm != 'Stormrage') {
                     vueChar.fullName = data.name + '-' + data.realm;
                 }
-
-                if (data.mythic_plus_best_runs.length === 0){
-                    vueChar.needsMeta = true;
-                }
-                $.each(data.mythic_plus_best_runs, function(index, value) {
-                    if (value.num_keystone_upgrades >= 1 && value.mythic_level >= 15) {
-                        vueChar.dungeonMap[value.short_name] = '';
-                    } else {
-                        vueChar.needsMeta = true;
-                    }
-                });                
 
                 if (data.mythic_plus_weekly_highest_level_runs.length < 1) {
                     return;
                 }
 
-                var plusRuns = data.mythic_plus_weekly_highest_level_runs;
-                var bestRun = plusRuns[0];
-                if (plusRuns.length > 1 && plusRuns[1].mythic_level > bestRun){
-                    bestRun = plusRuns[1];
-                }
-                if (plusRuns.length > 2 && plusRuns[2].mythic_level > bestRun){
-                    bestRun = plusRuns[2];
-                }
-                if (bestRun.mythic_level >= 15) {
-                    bestRun.rowClass = 'has-15';
-                } else if (bestRun.mythic_level >= 12) {
-                    bestRun.rowClass = 'has-12';
-                } else if (bestRun.mythic_level >= 10) {
-                    bestRun.rowClass = 'has-10';
-                }
-
-                vueChar.bestRun = {
-                    dungeon: bestRun.dungeon,
-                    level: bestRun.mythic_level,
-                    timeStamp: rioDateToWowServerDate(bestRun.completed_at),
-                    rowClass:bestRun.rowClass,
-                };
+                data.mythic_plus_weekly_highest_level_runs.sort(function(a, b){
+                    return (a.mythic_level - b.mythic_level) * -1;
+                });                
             }
         );
     }
@@ -125,8 +99,7 @@
                     fullName: value,
                     dungeonMap: {},
                     server: "Stormrage",
-                    bestRun: {},
-                    needsMeta: true,
+                    rioData: {},
                 };                
                 if (vueChar.name.indexOf('-') > 0) {
                     var parts = vueChar.name.split('-');
@@ -136,7 +109,7 @@
                 }
 
                 $.each(DUNGEONS, function(i, dungeon) {
-                    vueChar.dungeonMap[dungeon] = dungeon;
+                    vueChar.dungeonMap[dungeon] = '0';
                 });
                 vueData.allChars.push(vueChar);
                 processCharacter(vueChar);
@@ -147,6 +120,8 @@
             el: '#vue',
             data: vueData
         });
+
+        window.brad = vueData;
 
     });
 }()
