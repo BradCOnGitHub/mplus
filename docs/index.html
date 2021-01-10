@@ -34,7 +34,7 @@
                         <a v-if="char.rioData.profile_url" :href="char.rioData.profile_url">{{char.fullName}}</a>
                         <span v-else>{{char.fullName}}</span>
                     </div
-                    ><div class="pure-u-4-24 pure-u-md-4-24 pure-u-1"> 
+                    ><div class="pure-u-4-24 pure-u-md-4-24 pure-u-1 vaultBoxes"> 
                         <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[0]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[0].mythic_level]}}</template></div>
                         <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[3]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[3].mythic_level]}}</template></div>
                         <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[9]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[9].mythic_level]}}</template></div>
