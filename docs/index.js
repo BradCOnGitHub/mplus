@@ -117,7 +117,9 @@
                     fullName: value,
                     dungeonMap: {},
                     server: "Stormrage",
-                    rioData: {},
+                    rioData: {
+                        mythic_plus_weekly_highest_level_runs: []
+                    },
                 };                
                 if (vueChar.name.indexOf('-') > 0) {
                     var parts = vueChar.name.split('-');
