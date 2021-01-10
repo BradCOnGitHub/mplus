@@ -41,6 +41,23 @@
         "SOA",
     ];
 
+    const KEY_ILVL_MAP = {
+        '2':200,
+        '3':203,
+        '4':207,
+        '5':210,
+        '6':210,
+        '7':213,
+        '8':216,
+        '9':216,
+        '10':220,
+        '11':220,
+        '12':223,
+        '13':223,
+        '14':226,
+        '15':226,
+    };
+
     function rioDateToWowServerDate(input){
         return new Date(input).toLocaleString('en-US', { 
             timeZone: 'America/New_York',
@@ -91,6 +108,7 @@
         let vueData = {};
         vueData.allChars = [];
         vueData.allDungeons = DUNGEONS;
+        vueData.KEY_ILVL_MAP = KEY_ILVL_MAP;
         
         $.each(chars, function(index, value){
             if (value.length){

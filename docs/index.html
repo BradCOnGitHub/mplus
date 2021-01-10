@@ -26,7 +26,7 @@
             <div class="charlist">
                 <div class="headerrow pure-u-1">
                     <div class="pure-u-4-24">Character</div
-                    ><div class="pure-u-4-24">Count</div
+                    ><div class="pure-u-4-24">Boxes</div
                     ><div class="pure-u-16-24">Ten Best Keys</div>
                 </div>
                 <div v-for="char in allChars" class="charrow pure-u-1">
@@ -34,8 +34,10 @@
                         <a v-if="char.rioData.profile_url" :href="char.rioData.profile_url">{{char.fullName}}</a>
                         <span v-else>{{char.fullName}}</span>
                     </div
-                    ><div class="pure-u-4-24 pure-u-md-4-24 countCell"> 
-                        <template v-if="char.rioData.mythic_plus_weekly_highest_level_runs"> {{char.rioData.mythic_plus_weekly_highest_level_runs.length}}/10</template>
+                    ><div class="pure-u-4-24 pure-u-md-4-24"> 
+                        <template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[0]"> [{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[0].mythic_level]}}] </template>
+                        <template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[3]"> [{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[3].mythic_level]}}] </template>
+                        <template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[9]"> [{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[9].mythic_level]}}] </template>
                         </div
                     ><div class="pure-u-20-24 pure-u-md-16-24 keyCells">
                         <div v-for="plus in char.rioData.mythic_plus_weekly_highest_level_runs" class="pure-u-md-2-24">{{plus.mythic_level}}</div>
@@ -43,29 +45,17 @@
                 </div>
             </div>
         </div>
+        <div class="center">
+            <div class="dungeon-level-key-block pure-g">
+                <div class="headerrow pure-u-1">
+                    <div class="pure-u-12-24">Key Level</div><div class="pure-u-12-24">Vault iLvl</div>
+                </div>
+                <div v-for="(ilvl, key) in KEY_ILVL_MAP" class="charrow pure-u-1 "><div class="pure-u-1-2"> {{key}}</div><div class="pure-u-1-2">{{ilvl}}</div></div>
+            </div>
+        </div>        
     </div>
 
-    <div class="center">
-        <div class="dungeon-level-key-block pure-g">
-            <div class="headerrow pure-u-1">
-                <div class="pure-u-12-24">Key Level</div><div class="pure-u-12-24">Vault iLvl</div>
-            </div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2"> 2</div><div class="pure-u-1-2">200</div></div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2"> 3</div><div class="pure-u-1-2">203</div></div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2"> 4</div><div class="pure-u-1-2">207</div></div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2"> 5</div><div class="pure-u-1-2">210</div></div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2"> 6</div><div class="pure-u-1-2">210</div></div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2"> 7</div><div class="pure-u-1-2">213</div></div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2"> 8</div><div class="pure-u-1-2">216</div></div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2"> 9</div><div class="pure-u-1-2">216</div></div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2">10</div><div class="pure-u-1-2">220</div></div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2">11</div><div class="pure-u-1-2">220</div></div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2">12</div><div class="pure-u-1-2">223</div></div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2">13</div><div class="pure-u-1-2">223</div></div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2">14</div><div class="pure-u-1-2">226</div></div>
-            <div class="charrow pure-u-1 "><div class="pure-u-1-2">15</div><div class="pure-u-1-2">226</div></div>
-        </div>
-    </div>
+
 
     <div class="center info-block">
         <a href="https://wowaudit.com/us/stormrage/order-of-chaos/main"> WoW Audit Guild </a> 
