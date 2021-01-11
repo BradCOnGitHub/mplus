@@ -35,9 +35,9 @@
                         <span v-else>{{char.fullName}}</span>
                     </div
                     ><div class="pure-u-4-24 pure-u-md-4-24 pure-u-1 vaultBoxes"> 
-                        <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[0]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[0].mythic_level]}}</template></div>
-                        <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[3]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[3].mythic_level]}}</template></div>
-                        <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[9]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[9].mythic_level]}}</template></div>
+                        <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[0]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[0].mythic_level] || MAX_VAULT_ILVL}}</template></div>
+                        <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[3]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[3].mythic_level] || MAX_VAULT_ILVL}}</template></div>
+                        <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[9]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[9].mythic_level] || MAX_VAULT_ILVL}}</template></div>
                         </div
                     ><div class="pure-u-20-24 pure-u-md-16-24 keyCells">
                         <div v-for="plus in char.rioData.mythic_plus_weekly_highest_level_runs" class="pure-u-md-2-24 completedKey">{{plus.mythic_level}}</div
@@ -52,6 +52,7 @@
                     <div class="pure-u-12-24">Key Level</div><div class="pure-u-12-24">Vault iLvl</div>
                 </div>
                 <div v-for="(ilvl, key) in KEY_ILVL_MAP" class="charrow pure-u-1 "><div class="pure-u-1-2">{{key}}</div><div class="pure-u-1-2">{{ilvl}}</div></div>
+                <div class="charrow pure-u-1 "><div class="pure-u-1-2">14+</div><div class="pure-u-1-2">{{MAX_VAULT_ILVL}}</div></div>
             </div>
         </div>        
     </div>

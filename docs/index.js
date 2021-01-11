@@ -54,9 +54,9 @@
         '11':220,
         '12':223,
         '13':223,
-        '14':226,
-        '15':226,
     };
+
+    const MAX_VAULT_ILVL = 226;
 
     function rioDateToWowServerDate(input){
         return new Date(input).toLocaleString('en-US', { 
@@ -109,6 +109,7 @@
         vueData.allChars = [];
         vueData.allDungeons = DUNGEONS;
         vueData.KEY_ILVL_MAP = KEY_ILVL_MAP;
+        vueData.MAX_VAULT_ILVL = MAX_VAULT_ILVL;
         
         $.each(chars, function(index, value){
             if (value.length){
