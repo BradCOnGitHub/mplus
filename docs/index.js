@@ -37,22 +37,24 @@
     ];
 
     const KEY_ILVL_MAP = {
-        '2':226,
-        '3':226,
-        '4':226,
-        '5':229,
-        '6':229,
-        '7':233,
-        '8':236,
-        '9':236,
-        '10':239,
-        '11':242,
-        '12':246,
-        '13':246,
-        '14':249,
+        '2':252,
+        '3':252,
+        '4':252,
+        '5':255,
+        '6':255,
+        '7':259,
+        '8':262,
+        '9':262,
+        '10':265,
+        '11':268,
+        '12':272,
+        '13':272,
+        '14':275,
     };
 
-    const MAX_VAULT_ILVL = 252;
+    const MAX_VAULT_ILVL = 278;
+
+    const MAX_KEYS_NEEDED = 8;
 
     function rioDateToWowServerDate(input){
         return new Date(input).toLocaleString('en-US', { 
@@ -71,7 +73,7 @@
             url: 'https://raider.io/api/v1/characters/profile?region=us&realm=' + vueChar.server 
             + '&name=' + vueChar.name 
             + '&fields=mythic_plus_weekly_highest_level_runs,'
-            //+ 'mythic_plus_previous_weekly_highest_level_runs,'
+            + 'mythic_plus_previous_weekly_highest_level_runs,'
             + new Date() / 1, // this is a hack to prevent caching because cache control headers trigger CORS and their policy isn't configured
             dataType: 'json',
         }).done(
@@ -91,7 +93,11 @@
 
                 data.mythic_plus_weekly_highest_level_runs.sort(function(a, b){
                     return (a.mythic_level - b.mythic_level) * -1;
-                });                
+                });
+
+                while (data.mythic_plus_weekly_highest_level_runs.length > MAX_KEYS_NEEDED) {
+                    data.mythic_plus_weekly_highest_level_runs.pop();
+                }
             }
         );
     }
@@ -106,6 +112,7 @@
         vueData.allDungeons = DUNGEONS;
         vueData.KEY_ILVL_MAP = KEY_ILVL_MAP;
         vueData.MAX_VAULT_ILVL = MAX_VAULT_ILVL;
+        vueData.MAX_KEYS_NEEDED = MAX_KEYS_NEEDED;
         
         $.each(chars, function(index, value){
             if (value.length){

@@ -27,7 +27,7 @@
                 <div class="headerrow pure-u-1">
                     <div class="pure-u-4-24">Character</div
                     ><div class="pure-u-4-24">Vault Boxes</div
-                    ><div class="pure-u-16-24">Ten Best Keys</div>
+                    ><div class="pure-u-16-24">{{MAX_KEYS_NEEDED}} Best Keys</div>
                 </div>
                 <div v-for="char in allChars" class="charrow pure-u-1">
                     <div class="pure-u-1 pure-u-md-4-24 charNameCell">
@@ -37,11 +37,11 @@
                     ><div class="pure-u-4-24 pure-u-md-4-24 pure-u-1 vaultBoxes"> 
                         <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[0]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[0].mythic_level] || MAX_VAULT_ILVL}}</template></div>
                         <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[3]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[3].mythic_level] || MAX_VAULT_ILVL}}</template></div>
-                        <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[9]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[9].mythic_level] || MAX_VAULT_ILVL}}</template></div>
+                        <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[7]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[7].mythic_level] || MAX_VAULT_ILVL}}</template></div>
                         </div
                     ><div class="pure-u-20-24 pure-u-md-16-24 keyCells">
                         <div v-for="plus in char.rioData.mythic_plus_weekly_highest_level_runs" class="pure-u-md-2-24 completedKey">{{plus.mythic_level}}</div
-                        ><div v-for="x in (10 - char.rioData.mythic_plus_weekly_highest_level_runs.length)" class="pure-u-md-2-24"></div>
+                        ><div v-for="x in (MAX_KEYS_NEEDED - char.rioData.mythic_plus_weekly_highest_level_runs.length)" class="pure-u-md-2-24"></div>
                     </div>
                 </div>
             </div>
