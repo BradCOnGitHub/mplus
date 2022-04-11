@@ -14,15 +14,16 @@
         'Sudac',
         'Thusia',
         'Tiggie',
-        'Truwarr',
         'Uthion',
         'Astranyth',
         'Kko',
         'Nexpel',
         'Ockham',
-        'Truulorr',
-        'Maugis',
+        'Gimilbeep',
         'Taliendra',
+        'Unnameable',
+        'Illarramvp',
+        'Belasha',
     ];
 
     const DUNGEONS = [
