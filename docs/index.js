@@ -10,7 +10,6 @@
         'Elita',
         'Kanthal',
         'Malhavoc',
-        'Marta',
         'Sudac',
         'Thusia',
         'Tiggie',
@@ -75,6 +74,7 @@
             + '&name=' + vueChar.name 
             + '&fields=mythic_plus_weekly_highest_level_runs,'
             + 'mythic_plus_previous_weekly_highest_level_runs,'
+            + 'mythic_plus_scores_by_season:current,'
             + new Date() / 1, // this is a hack to prevent caching because cache control headers trigger CORS and their policy isn't configured
             dataType: 'json',
         }).done(

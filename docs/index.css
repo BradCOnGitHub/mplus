@@ -54,6 +54,7 @@
     .headerrow {
         font-weight: bold;
         border-bottom: 2px solid black;
+        margin-bottom: 2px;
     }
 
     .charNameCell a {
@@ -62,6 +63,11 @@
 
     .charNameCell a:hover {
         text-decoration: underline;
+    }
+
+    .mPlusScore {
+        text-align: right;
+        padding-right: 10px;
     }
 
     .box-ilvl {
@@ -77,25 +83,25 @@
         text-align: center;
         min-height: 1em;
     }
-    .keyCells div:nth-child(-n+10).completedKey, .vaultBoxes .box-ilvl:nth-child(3):not(:empty) {
+    .keyCells div:nth-child(-n+8).completedKey, .vaultBoxes .box-ilvl:nth-child(3):not(:empty) {
         background-color: lightsalmon;
     }
-    .keyCells div:nth-child(-n+10), .vaultBoxes .box-ilvl:nth-child(3) {
-        border: 1px solid lightsalmon;
+    .keyCells div:nth-child(-n+8), .vaultBoxes .box-ilvl:nth-child(3) {
+        outline: 1px solid lightsalmon;
     }
 
     .keyCells div:nth-child(-n+4).completedKey, .vaultBoxes .box-ilvl:nth-child(2):not(:empty) {
         background-color: lightblue;
     }
     .keyCells div:nth-child(-n+4), .vaultBoxes .box-ilvl:nth-child(2) {
-        border: 1px solid lightblue;
+        outline: 1px solid lightblue;
     }
 
     .keyCells div:nth-child(1).completedKey, .vaultBoxes .box-ilvl:nth-child(1):not(:empty) {
         background-color: lightgreen;
     }
     .keyCells div:nth-child(1), .vaultBoxes .box-ilvl:nth-child(1) {
-        border: 1px solid lightgreen;
+        outline: 1px solid lightgreen;
     }
 
 
