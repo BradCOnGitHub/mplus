@@ -37,7 +37,7 @@
                             <span v-else>{{char.fullName}}</span>
                         </div
                         ><div class="pure-u-1-2">
-                            <div class="mPlusScore">{{Math.floor(char.rioData.mythic_plus_scores_by_season[0].scores.all)}}</div>
+                            <div v-if="char.rioData.mythic_plus_scores_by_season" class="mPlusScore">{{Math.floor(char.rioData.mythic_plus_scores_by_season[0].scores.all)}}</div>
                         </div>
                     </div
                     ><div class="pure-u-4-24 pure-u-md-4-24 pure-u-1 vaultBoxes"> 
