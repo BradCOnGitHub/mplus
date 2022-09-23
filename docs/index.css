@@ -72,6 +72,12 @@
         color: darkgray;
     }
 
+    .lastWeek {
+        font-style: italic;
+        text-align: center;
+        color: darkblue;
+    }
+
     .box-ilvl {
         text-align: center;
         min-height: 1em;

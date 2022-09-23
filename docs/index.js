@@ -88,6 +88,10 @@
                     vueChar.fullName = data.name + '-' + data.realm;
                 }
 
+                data.mythic_plus_previous_weekly_highest_level_runs.sort(function(a, b){
+                    return (a.mythic_level - b.mythic_level) * -1;
+                });
+
                 if (data.mythic_plus_weekly_highest_level_runs.length < 1) {
                     return;
                 }
@@ -123,7 +127,8 @@
                     dungeonMap: {},
                     server: "Stormrage",
                     rioData: {
-                        mythic_plus_weekly_highest_level_runs: []
+                        mythic_plus_weekly_highest_level_runs: [],
+                        mythic_plus_previous_weekly_highest_level_runs: []
                     },
                 };                
                 if (vueChar.name.indexOf('-') > 0) {
