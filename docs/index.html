@@ -63,7 +63,7 @@
                     <div class="pure-u-12-24">Key Level</div><div class="pure-u-12-24">Vault iLvl</div>
                 </div>
                 <div v-for="(ilvl, key) in KEY_ILVL_MAP" class="charrow pure-u-1 "><div class="pure-u-1-2">{{key}}</div><div class="pure-u-1-2">{{ilvl}}</div></div>
-                <div class="charrow pure-u-1 "><div class="pure-u-1-2">15+</div><div class="pure-u-1-2">{{MAX_VAULT_ILVL}}</div></div>
+                <div class="charrow pure-u-1 "><div class="pure-u-1-2">{{Object.keys(KEY_ILVL_MAP).length + Number(Object.keys(KEY_ILVL_MAP)[0])}}+</div><div class="pure-u-1-2">{{MAX_VAULT_ILVL}}</div></div>
             </div>
         </div>        
     </div>

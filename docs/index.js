@@ -17,12 +17,17 @@
         'Astranyth',
         'Kko',
         'Nexpel',
+        'Nexwrex',
         'Ockham',
         'Gimilbeep',
         'Taliendra',
         'Unnameable',
         'Illarramvp',
         'Belasha',
+        'Marta',
+        'Drogan',
+        'Evokage',
+        'Felshady',
     ];
 
     const DUNGEONS = [
@@ -37,22 +42,26 @@
     ];
 
     const KEY_ILVL_MAP = {
-        '2':278,
-        '3':278,
-        '4':278,
-        '5':282,
-        '6':282,
-        '7':285,
-        '8':288,
-        '9':288,
-        '10':291,
-        '11':294,
-        '12':297,
-        '13':297,
-        '14':301,
+        '2':376,
+        '3':376,
+        '4':379,
+        '5':379,
+        '6':382,
+        '7':385,
+        '8':385,
+        '9':389,
+        '10':392,
+        '11':392,
+        '12':392,
+        '13':392,
+        '14':395,
+        '15':398,
+        '16':398,
+        '17':402,
+        '18':402,
     };
 
-    const MAX_VAULT_ILVL = 304;
+    const MAX_VAULT_ILVL = 405;
 
     const MAX_KEYS_NEEDED = 8;
 
