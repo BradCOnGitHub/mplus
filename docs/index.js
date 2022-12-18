@@ -42,27 +42,28 @@
     ];
 
     const KEY_ILVL_MAP = {
-        '2':376,
-        '3':376,
-        '4':379,
-        '5':379,
-        '6':382,
-        '7':385,
-        '8':385,
-        '9':389,
-        '10':392,
-        '11':392,
-        '12':392,
-        '13':392,
-        '14':395,
-        '15':398,
-        '16':398,
-        '17':402,
-        '18':402,
+        '2':  { loot: 376, vault: 382 },
+        '3':  { loot: 376, vault: 385 },
+        '4':  { loot: 379, vault: 385 },
+        '5':  { loot: 379, vault: 389 },
+        '6':  { loot: 382, vault: 389 },
+        '7':  { loot: 385, vault: 392 },
+        '8':  { loot: 385, vault: 395 },
+        '9':  { loot: 389, vault: 395 },
+        '10': { loot: 392, vault: 398 },
+        '11': { loot: 392, vault: 402 },
+        '12': { loot: 392, vault: 405 },
+        '13': { loot: 392, vault: 408 },
+        '14': { loot: 395, vault: 408 },
+        '15': { loot: 398, vault: 411 },
+        '16': { loot: 398, vault: 415 },
+        '17': { loot: 402, vault: 415 },
+        '18': { loot: 402, vault: 418 },
+        '19': { loot: 405, vault: 418 },
+        '20': { loot: 405, vault: 421 },
     };
 
-    const MAX_VAULT_ILVL = 405;
-
+    const MAX_KEY_LEVEL = '20';
     const MAX_KEYS_NEEDED = 8;
 
     function rioDateToWowServerDate(input){
@@ -125,7 +126,7 @@
         vueData.allChars = [];
         vueData.allDungeons = DUNGEONS;
         vueData.KEY_ILVL_MAP = KEY_ILVL_MAP;
-        vueData.MAX_VAULT_ILVL = MAX_VAULT_ILVL;
+        vueData.MAX_KEY_LEVEL = MAX_KEY_LEVEL;
         vueData.MAX_KEYS_NEEDED = MAX_KEYS_NEEDED;
         
         $.each(chars, function(index, value){
