@@ -11,7 +11,6 @@
         'Kanthal',
         'Malhavoc',
         'Sudac',
-        'Thusia',
         'Tiggie',
         'Uthion',
         'Astranyth',
@@ -19,15 +18,13 @@
         'Nexpel',
         'Nexwrex',
         'Ockham',
-        'Gimilbeep',
         'Taliendra',
         'Unnameable',
-        'Illarramvp',
-        'Belasha',
         'Marta',
         'Drogan',
         'Evokage',
         'Felshady',
+        'Kozanasan',
     ];
 
     const DUNGEONS = [
