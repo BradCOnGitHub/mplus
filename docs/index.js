@@ -24,7 +24,7 @@
         'Sudac',
         'Taliendra',
         'Tiggie',
-        'Trulo',
+        'Trulegit',
         'Unnameable',
         'Uthion',
         'Yubero',
