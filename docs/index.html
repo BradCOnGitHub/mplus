@@ -62,7 +62,7 @@
                 <div class="headerrow pure-u-1">
                     <div class="pure-u-8-24">Key Level</div><div class="pure-u-8-24">Dungeon iLvl</div><div class="pure-u-8-24">Vault iLvl</div>
                 </div>
-                <div v-for="(ilvl, key) in KEY_ILVL_MAP" class="charrow pure-u-1 "><div class="pure-u-8-24">{{key}}<span v-if="key == MAX_KEY_LEVEL">+</span></div><div class="pure-u-8-24">{{ilvl.loot}}</div><div class="pure-u-8-24">{{ilvl.vault}}</div></div>
+                <div v-for="(ilvl, key) in KEY_ILVL_MAP" class="charrow pure-u-1 "><div class="pure-u-8-24">{{key}}<span v-if="key == MAX_KEY_LEVEL">+</span></div><div class="pure-u-8-24">{{ilvl.loot}}-{{ilvl.dtrack}}</div><div class="pure-u-8-24">{{ilvl.vault}}-{{ilvl.vtrack}}</div></div>
             </div>
         </div>        
     </div>
