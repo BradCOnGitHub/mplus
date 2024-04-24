@@ -42,28 +42,19 @@
     ];
 
     const KEY_ILVL_MAP = {
-        '2':  { loot: 441, dtrack:'Veteran' , vault: 454, vtrack:'Champion' },
-        '3':  { loot: 444, dtrack:'Veteran' , vault: 457, vtrack:'Champion' },
-        '4':  { loot: 444, dtrack:'Veteran' , vault: 460, vtrack:'Champion' },
-        '5':  { loot: 447, dtrack:'Veteran' , vault: 460, vtrack:'Champion' },
-        '6':  { loot: 447, dtrack:'Veteran' , vault: 463, vtrack:'Champion' },
-        '7':  { loot: 450, dtrack:'Veteran' , vault: 463, vtrack:'Champion' },
-        '8':  { loot: 450, dtrack:'Veteran' , vault: 467, vtrack:'Hero'     },
-        '9':  { loot: 454, dtrack:'Champion', vault: 467, vtrack:'Hero'     },
-        '10': { loot: 454, dtrack:'Champion', vault: 470, vtrack:'Hero'     },
-        '11': { loot: 457, dtrack:'Champion', vault: 470, vtrack:'Hero'     },
-        '12': { loot: 457, dtrack:'Champion', vault: 473, vtrack:'Hero'     },
-        '13': { loot: 460, dtrack:'Champion', vault: 473, vtrack:'Hero'     },
-        '14': { loot: 460, dtrack:'Champion', vault: 473, vtrack:'Hero'     },
-        '15': { loot: 463, dtrack:'Champion', vault: 476, vtrack:'Hero'     },
-        '16': { loot: 463, dtrack:'Champion', vault: 476, vtrack:'Hero'     },
-        '17': { loot: 467, dtrack:'Hero'    , vault: 476, vtrack:'Hero'     },
-        '18': { loot: 467, dtrack:'Hero'    , vault: 480, vtrack:'Myth'     },
-        '19': { loot: 470, dtrack:'Hero'    , vault: 480, vtrack:'Myth'     },
-        '20': { loot: 470, dtrack:'Hero'    , vault: 483, vtrack:'Myth'     },
+        '0':  { loot: 493, dtrack:'Champion 1/8', vault: 506, vtrack:'Hero 1/6' },
+        '2':  { loot: 496, dtrack:'Champion 2/8', vault: 509, vtrack:'Hero 2/6' },
+        '3':  { loot: 499, dtrack:'Champion 3/8', vault: 509, vtrack:'Hero 2/6' },
+        '4':  { loot: 499, dtrack:'Champion 3/8', vault: 512, vtrack:'Hero 3/6' },
+        '5':  { loot: 502, dtrack:'Champion 4/8', vault: 512, vtrack:'Hero 3/6' },
+        '6':  { loot: 502, dtrack:'Champion 4/8', vault: 515, vtrack:'Hero 4/6' },
+        '7':  { loot: 506, dtrack:'Hero 1/6    ', vault: 515, vtrack:'Hero 4/6' },
+        '8':  { loot: 506, dtrack:'Hero 1/6    ', vault: 519, vtrack:'Myth 1/4' },
+        '9':  { loot: 509, dtrack:'Hero 2/6    ', vault: 519, vtrack:'Myth 1/4' },
+        '10': { loot: 509, dtrack:'Hero 2/6    ', vault: 522, vtrack:'Myth 2/4' },
     };
 
-    const MAX_KEY_LEVEL = '20';
+    const MAX_KEY_LEVEL = '10';
     const MAX_KEYS_NEEDED = 8;
 
     function rioDateToWowServerDate(input){
