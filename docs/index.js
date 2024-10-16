@@ -43,16 +43,16 @@
     ];
 
     const KEY_ILVL_MAP = {
-        '0':  { loot: 593, dtrack:'Veteran 8/8',  vault: 603, vtrack:'Champion 3/6' },
-        '2':  { loot: 597, dtrack:'Champion 1/8', vault: 606, vtrack:'Champion 4/6' },
-        '3':  { loot: 597, dtrack:'Champion 1/8', vault: 610, vtrack:'Hero 1/6' },
-        '4':  { loot: 600, dtrack:'Champion 2/8', vault: 610, vtrack:'Hero 1/6' },
-        '5':  { loot: 603, dtrack:'Champion 3/8', vault: 613, vtrack:'Hero 2/6' },
-        '6':  { loot: 606, dtrack:'Champion 4/8', vault: 613, vtrack:'Hero 2/6' },
-        '7':  { loot: 610, dtrack:'Hero 1/6    ', vault: 616, vtrack:'Hero 3/6' },
-        '8':  { loot: 610, dtrack:'Hero 1/6    ', vault: 619, vtrack:'Hero 4/6' },
-        '9':  { loot: 613, dtrack:'Hero 2/6    ', vault: 619, vtrack:'Hero 4/6' },
-        '10': { loot: 613, dtrack:'Hero 2/6    ', vault: 623, vtrack:'Myth 1/4' },
+        '0':  { loot: 593, crest: 'Carved', dtrack:'Veteran 8/8',  vault: 603, vtrack:'Champion 3/8' },
+        '2':  { loot: 597, crest: 'Carved', dtrack:'Champion 1/8', vault: 606, vtrack:'Champion 4/8' },
+        '3':  { loot: 597, crest: 'Carved', dtrack:'Champion 1/8', vault: 610, vtrack:'Hero 1/6' },
+        '4':  { loot: 600, crest: 'Runed',  dtrack:'Champion 2/8', vault: 610, vtrack:'Hero 1/6' },
+        '5':  { loot: 603, crest: 'Runed',  dtrack:'Champion 3/8', vault: 613, vtrack:'Hero 2/6' },
+        '6':  { loot: 606, crest: 'Runed',  dtrack:'Champion 4/8', vault: 613, vtrack:'Hero 2/6' },
+        '7':  { loot: 610, crest: 'Runed',  dtrack:'Hero 1/6    ', vault: 616, vtrack:'Hero 3/6' },
+        '8':  { loot: 610, crest: 'Gilded', dtrack:'Hero 1/6    ', vault: 619, vtrack:'Hero 4/6' },
+        '9':  { loot: 613, crest: 'Gilded', dtrack:'Hero 1/6    ', vault: 619, vtrack:'Hero 4/6' },
+        '10': { loot: 613, crest: 'Gilded', dtrack:'Hero 1/6    ', vault: 623, vtrack:'Myth 1/6' },
     };
     const MAX_KEY_LEVEL = '10';
     const MAX_KEYS_NEEDED = 8;

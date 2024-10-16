@@ -13,6 +13,13 @@
         display: none;
     }
 
+    .dungeon-level-key-block {
+        font-size: x-small;
+    }
+
+    .dungeon-level-key-block {
+        width: 90% !important;
+    }
 }
 
 @media all {
@@ -121,7 +128,8 @@
         margin-bottom: 1em;
         width: 40%;
     }
-    .dungeon-level-key-block div {
+
+    .dungeon-level-key-block .keyLevelCell {
         text-align: center;
     }
 
