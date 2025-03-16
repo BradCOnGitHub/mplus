@@ -2,25 +2,29 @@
 
     var chars = [
         //'Ahsaka',
+        'Aescarion',
         'Astranyth',
         'Blargenskull',
         'Cezsary',
         'Chao',
-        'Drakè',
         //'Drogan',
         'Drulic',
         'Elita',
-        'Eumsm',
-        'Evokage',
-        'Felshady',
+        //'Eumsm',
+        //'Evokage',
+        //'Felshady',
+        'Grandkami',
         'Kanthal',
         //'Kko',
-        'Malhavoc',
-        'Marta',
+        //'Malhavoc',
+        //'Marta',
         'Neito',
         //'Nexotic',
-        'Nexwrex',
+        //'Nexwrex',
+        'Nexorcism',
         'Ockham',
+        'P%C3%BCff',
+        'Rakambo',
         'Spunkie', 
         'Sudac',
         'Taliendra',
@@ -31,28 +35,17 @@
         'Yubero',
     ];
 
-    const DUNGEONS = [
-        "TOP",
-        "MISTS",
-        "SD",
-        "NW",
-        "HOA",
-        "DOS",
-        "PF",
-        "SOA",
-    ];
-
     const KEY_ILVL_MAP = {
-        '0':  { loot: 593, crest: 'Carved', dtrack:'Veteran 8/8',  vault: 603, vtrack:'Champion 3/8' },
-        '2':  { loot: 597, crest: 'Carved', dtrack:'Champion 1/8', vault: 606, vtrack:'Champion 4/8' },
-        '3':  { loot: 597, crest: 'Carved', dtrack:'Champion 1/8', vault: 610, vtrack:'Hero 1/6' },
-        '4':  { loot: 600, crest: 'Runed',  dtrack:'Champion 2/8', vault: 610, vtrack:'Hero 1/6' },
-        '5':  { loot: 603, crest: 'Runed',  dtrack:'Champion 3/8', vault: 613, vtrack:'Hero 2/6' },
-        '6':  { loot: 606, crest: 'Runed',  dtrack:'Champion 4/8', vault: 613, vtrack:'Hero 2/6' },
-        '7':  { loot: 610, crest: 'Runed',  dtrack:'Hero 1/6    ', vault: 616, vtrack:'Hero 3/6' },
-        '8':  { loot: 610, crest: 'Gilded', dtrack:'Hero 1/6    ', vault: 619, vtrack:'Hero 4/6' },
-        '9':  { loot: 613, crest: 'Gilded', dtrack:'Hero 1/6    ', vault: 619, vtrack:'Hero 4/6' },
-        '10': { loot: 613, crest: 'Gilded', dtrack:'Hero 1/6    ', vault: 623, vtrack:'Myth 1/6' },
+        '0':  { loot: 636, crest: 'Carved (15)', dtrack:'Veteran 8/8',  vault: 645, vtrack:'Champion 4/8' },
+        '2':  { loot: 639, crest: 'Runed (10)', dtrack:'Champion 1/8', vault: 649, vtrack:'Hero 1/6' },
+        '3':  { loot: 639, crest: 'Runed (12)', dtrack:'Champion 1/8', vault: 649, vtrack:'Hero 1/6' },
+        '4':  { loot: 642, crest: 'Runed (14)',  dtrack:'Champion 2/8', vault: 652, vtrack:'Hero 2/6' },
+        '5':  { loot: 645, crest: 'Runed (16)',  dtrack:'Champion 3/8', vault: 652, vtrack:'Hero 2/6' },
+        '6':  { loot: 649, crest: 'Runed (18)',  dtrack:'Champion 4/8', vault: 655, vtrack:'Hero 3/6' },
+        '7':  { loot: 649, crest: 'Gilded (10)', dtrack:'Hero 1/6    ', vault: 658, vtrack:'Hero 4/6' },
+        '8':  { loot: 652, crest: 'Gilded (12)', dtrack:'Hero 1/6    ', vault: 658, vtrack:'Hero 4/6' },
+        '9':  { loot: 652, crest: 'Gilded (14)', dtrack:'Hero 1/6    ', vault: 658, vtrack:'Hero 4/6' },
+        '10': { loot: 655, crest: 'Gilded (16)', dtrack:'Hero 1/6    ', vault: 662, vtrack:'Myth 1/6' },
     };
     const MAX_KEY_LEVEL = '10';
     const MAX_KEYS_NEEDED = 8;
@@ -111,11 +104,9 @@
     $(function() {
         
         chars.sort();
-        DUNGEONS.sort();
 
         let vueData = {};
         vueData.allChars = [];
-        vueData.allDungeons = DUNGEONS;
         vueData.KEY_ILVL_MAP = KEY_ILVL_MAP;
         vueData.MAX_KEY_LEVEL = MAX_KEY_LEVEL;
         vueData.MAX_KEYS_NEEDED = MAX_KEYS_NEEDED;
@@ -125,7 +116,6 @@
                 let vueChar = {
                     name: value,
                     fullName: value,
-                    dungeonMap: {},
                     server: "Stormrage",
                     rioData: {
                         mythic_plus_weekly_highest_level_runs: [],
@@ -139,9 +129,6 @@
                     vueChar.fullName = value;
                 }
 
-                $.each(DUNGEONS, function(i, dungeon) {
-                    vueChar.dungeonMap[dungeon] = '0';
-                });
                 vueData.allChars.push(vueChar);
                 processCharacter(vueChar);
             }

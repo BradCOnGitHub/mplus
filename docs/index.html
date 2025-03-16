@@ -34,7 +34,7 @@
                 <div v-for="char in allChars" class="charrow pure-u-1">
                     <div class="pure-u-1 pure-u-md-4-24 charNameCell">
                         <div class="pure-u-1-2">
-                            <a v-if="char.rioData.profile_url" :href="char.rioData.profile_url">{{char.fullName}}</a>
+                            <a v-if="char.rioData.profile_url" :href="char.rioData.profile_url" target="_blank">{{char.fullName}}</a>
                             <span v-else>{{char.fullName}}</span>
                         </div
                         ><div class="pure-u-1-4">
@@ -75,11 +75,13 @@
 
 
     <div class="center info-block">
-        <a href="https://wowaudit.com/us/stormrage/order-of-chaos/main"> WoW Audit Guild </a> 
+        <a href="https://www.warcraftlogs.com/guild/reports-list/82517" target="_blank"> Logs </a>
+        &nbsp;-&nbsp;
+        <a href="https://worldofwarcraft.blizzard.com/en-us/guild/us/stormrage/order-of-chaos/" target="_blank"> Armory </a>
         &nbsp;-&nbsp; 
-        <a href="https://wowaudit.com/sheet/us/stormrage/order-of-chaos/main"> WoW Audit Spreadsheet </a>
+        <a href="https://wowaudit.com/us/stormrage/order-of-chaos/main" target="_blank"> WoW Audit Guild </a> 
         &nbsp;-&nbsp; 
-        <a href="https://github.com/BradCOnGitHub/mplus/tree/master/docs"> Code on GitHub </a>
+        <a href="https://github.com/BradCOnGitHub/mplus/tree/master/docs" target="_blank"> Code on GitHub </a>
     </div>    
 </body>
 </html>
