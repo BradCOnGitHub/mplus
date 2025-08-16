@@ -29,23 +29,23 @@
         'Sudac',
         'Taliendra',
         //'Tiggie',
-        'Trulegit',
+        'Truwarr',
         //'Unnameable',
         'Uthion',
         'Yubero',
     ];
 
     const KEY_ILVL_MAP = {
-        '0':  { loot: 636, crest: 'Carved (15)', dtrack:'Champion 1/8',  vault: 645, vtrack:'Champion 4/8' },
-        '2':  { loot: 639, crest: 'Runed (10)', dtrack:'Champion 2/8', vault: 649, vtrack:'Hero 1/6' },
-        '3':  { loot: 639, crest: 'Runed (12)', dtrack:'Champion 2/8', vault: 649, vtrack:'Hero 1/6' },
-        '4':  { loot: 642, crest: 'Runed (14)',  dtrack:'Champion 3/8', vault: 652, vtrack:'Hero 2/6' },
-        '5':  { loot: 645, crest: 'Runed (16)',  dtrack:'Champion 4/8', vault: 652, vtrack:'Hero 2/6' },
-        '6':  { loot: 649, crest: 'Runed (18)',  dtrack:'Hero 1/6    ', vault: 655, vtrack:'Hero 3/6' },
-        '7':  { loot: 649, crest: 'Gilded (10)', dtrack:'Hero 1/6    ', vault: 658, vtrack:'Hero 4/6' },
-        '8':  { loot: 652, crest: 'Gilded (12)', dtrack:'Hero 2/6    ', vault: 658, vtrack:'Hero 4/6' },
-        '9':  { loot: 652, crest: 'Gilded (14)', dtrack:'Hero 2/6    ', vault: 658, vtrack:'Hero 4/6' },
-        '10': { loot: 655, crest: 'Gilded (16)', dtrack:'Hero 3/6    ', vault: 662, vtrack:'Myth 1/6' },
+        '0':  { loot: 681, crest: 'Carved (15)', dtrack:'Champion 1/8',  vault: 691, vtrack:'Champion 4/8' },
+        '2':  { loot: 684, crest: 'Runed (10)', dtrack:'Champion 2/8', vault: 694, vtrack:'Hero 1/6' },
+        '3':  { loot: 684, crest: 'Runed (12)', dtrack:'Champion 2/8', vault: 694, vtrack:'Hero 1/6' },
+        '4':  { loot: 688, crest: 'Runed (14)',  dtrack:'Champion 3/8', vault: 697, vtrack:'Hero 2/6' },
+        '5':  { loot: 691, crest: 'Runed (16)',  dtrack:'Champion 4/8', vault: 697, vtrack:'Hero 2/6' },
+        '6':  { loot: 694, crest: 'Runed (18)',  dtrack:'Hero 1/6    ', vault: 701, vtrack:'Hero 3/6' },
+        '7':  { loot: 695, crest: 'Gilded (10)', dtrack:'Hero 1/6    ', vault: 704, vtrack:'Hero 4/6' },
+        '8':  { loot: 697, crest: 'Gilded (12)', dtrack:'Hero 2/6    ', vault: 704, vtrack:'Hero 4/6' },
+        '9':  { loot: 697, crest: 'Gilded (14)', dtrack:'Hero 2/6    ', vault: 704, vtrack:'Hero 4/6' },
+        '10': { loot: 701, crest: 'Gilded (16)', dtrack:'Hero 3/6    ', vault: 707, vtrack:'Myth 1/6' },
     };
     const MAX_KEY_LEVEL = '10';
     const MAX_KEYS_NEEDED = 8;
