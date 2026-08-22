@@ -16,6 +16,7 @@
         //'Felshady',
         //'Grandkami',
         'Kanthal',
+        'Kaydon',
         //'Kko',
         //'Malhavoc',
         //'Marta',
@@ -34,23 +35,24 @@
         //'Tiggie',
         //'Truwarr',
         'Thusia',
-        'Trulagit',
-        //'Unnameable',
+        'Trulorre',
+        //'Trulagit',
         'Uthion',
         'Yubero',
+        'Wrokk'
     ];
 
     const KEY_ILVL_MAP = {
-        '0':  { loot: 246, crest: 'Champion (15)', dtrack:'Champion 1/6',  vault: 256, vtrack:'Champion 4/6' },
-        '2':  { loot: 250, crest: 'Hero (6) ', dtrack:'Champion 2/6', vault: 259, vtrack:'Hero 1/6' },
-        '3':  { loot: 250, crest: 'Hero (8) ', dtrack:'Champion 2/6', vault: 259, vtrack:'Hero 1/6' },
-        '4':  { loot: 253, crest: 'Hero (10)', dtrack:'Champion 3/6', vault: 263, vtrack:'Hero 2/6' },
-        '5':  { loot: 256, crest: 'Hero (12)', dtrack:'Champion 4/6', vault: 263, vtrack:'Hero 2/6' },
-        '6':  { loot: 259, crest: 'Hero (14)', dtrack:'Hero 1/6    ', vault: 266, vtrack:'Hero 3/6' },
-        '7':  { loot: 259, crest: 'Hero (16)', dtrack:'Hero 1/6    ', vault: 269, vtrack:'Hero 4/6' },
-        '8':  { loot: 263, crest: 'Hero (18)', dtrack:'Hero 2/6    ', vault: 269, vtrack:'Hero 4/6' },
-        '9':  { loot: 263, crest: 'Myth (10)', dtrack:'Hero 2/6    ', vault: 269, vtrack:'Hero 4/6' },
-        '10': { loot: 266, crest: 'Myth (12)', dtrack:'Hero 3/6    ', vault: 272, vtrack:'Myth 1/6' },
+        '0':  { loot: 292, crest: 'Champion', dtrack:'Champion 2/6',  vault: 302, vtrack:'Champion 4/6' },
+        '2':  { loot: 295, crest: 'Champion', dtrack:'Champion 2/6',  vault: 305, vtrack:'Hero 1/6' },
+        '3':  { loot: 295, crest: 'Hero (8) ', dtrack:'Champion 2/6', vault: 305, vtrack:'Hero 1/6' },
+        '4':  { loot: 298, crest: 'Hero (10)', dtrack:'Champion 3/6', vault: 308, vtrack:'Hero 2/6' },
+        '5':  { loot: 302, crest: 'Hero (12)', dtrack:'Champion 4/6', vault: 308, vtrack:'Hero 2/6' },
+        '6':  { loot: 305, crest: 'Hero (14)', dtrack:'Hero 1/6    ', vault: 311, vtrack:'Hero 3/6' },
+        '7':  { loot: 305, crest: 'Hero (16)', dtrack:'Hero 1/6    ', vault: 315, vtrack:'Hero 4/6' },
+        '8':  { loot: 308, crest: 'Hero (18)', dtrack:'Hero 2/6    ', vault: 315, vtrack:'Hero 4/6' },
+        '9':  { loot: 308, crest: 'Myth (10)', dtrack:'Hero 2/6    ', vault: 315, vtrack:'Hero 4/6' },
+        '10': { loot: 311, crest: 'Myth (12)', dtrack:'Hero 3/6    ', vault: 318, vtrack:'Myth 1/6' },
     };
     const MAX_KEY_LEVEL = '10';
     const MAX_KEYS_NEEDED = 8;
