@@ -141,3 +141,185 @@
         background-color: whitesmoke;
     }
 }
+
+@media all {
+
+    /* activeChars only reaches zero once raider.io has answered for everyone, since
+       isActive falls back to the generated bucket while a character is unloaded. In
+       practice that means a season rollover, when every score resets to zero. */
+    .empty-state {
+        text-align: center;
+        padding: 2.5em 1em 2em;
+        color: gray;
+    }
+
+    .empty-hint {
+        font-size: small;
+        max-width: 34em;
+        margin: 0.6em auto 0;
+        line-height: 1.5;
+    }
+
+    .list-footer {
+        display: flex;
+        align-items: center;
+        border-top: 1px solid lightgray;
+        margin-top: 0.75em;
+        padding-top: 0.4em;
+        font-size: small;
+    }
+
+    /* margin-left:auto rather than space-between, so it stays right even when
+       there are no inactive characters and it is the only child */
+    .theme-toggle {
+        margin-left: auto;
+        text-decoration: none;
+        color: gray;
+    }
+
+    .theme-toggle:hover {
+        text-decoration: underline;
+        color: black;
+    }
+
+    .inactive-header {
+        cursor: pointer;
+        user-select: none;
+        color: gray;
+    }
+
+    .inactive-header:hover {
+        color: black;
+    }
+
+    .inactive-list {
+        columns: 9em;
+        column-gap: 1.5em;
+        padding-top: 0.9em;
+        font-size: small;
+    }
+
+    .inactive-name {
+        display: block;
+        break-inside: avoid;
+        padding: 0.15em 0;
+    }
+
+    .inactive-name a {
+        text-decoration: none;
+        color: gray;
+    }
+
+    .inactive-name a:hover {
+        text-decoration: underline;
+        color: black;
+    }
+}
+
+
+/* Dark theme, on by default. index.js puts .dark on <html> while the document is still
+   parsing, from the stored preference, so the page never flashes the wrong theme.
+   Removing the class falls back to everything above, which is the original light page --
+   that is what the classic toggle does. Class colours are built for WoW's dark UI and
+   lose their identity when darkened enough to read on white, which is why they only
+   appear in this theme. */
+@media all {
+
+    .dark body {
+        background-color: #151515;
+        color: #dddddd;
+    }
+
+    .dark .charrow {
+        background-color: #1e1e1e;
+    }
+
+    .dark .charrow:hover {
+        background-color: #333333 !important;
+    }
+
+    .dark .headerrow {
+        color: #ffffff;
+        border-bottom: 2px solid #555555;
+    }
+
+    /* the vault and key cells keep pale fills, so their numbers must stay dark */
+    .dark .keyCells div.completedKey,
+    .dark .vaultBoxes .box-ilvl:not(:empty) {
+        color: #151515;
+    }
+
+    /* Vault tiers at 1 / 4 / 8 runs, coloured as WoW's uncommon-rare-epic progression.
+       Declared widest-first, matching the light rules above, so the narrower selectors
+       still win for the cells they overlap. */
+    .dark .keyCells div:nth-child(-n+8).completedKey,
+    .dark .vaultBoxes .box-ilvl:nth-child(3):not(:empty) {
+        background-color: #c08ae8;
+    }
+    .dark .keyCells div:nth-child(-n+8),
+    .dark .vaultBoxes .box-ilvl:nth-child(3) {
+        outline-color: #c08ae8;
+    }
+
+    .dark .keyCells div:nth-child(-n+4).completedKey,
+    .dark .vaultBoxes .box-ilvl:nth-child(2):not(:empty) {
+        background-color: #7fb8ef;
+    }
+    .dark .keyCells div:nth-child(-n+4),
+    .dark .vaultBoxes .box-ilvl:nth-child(2) {
+        outline-color: #7fb8ef;
+    }
+
+    .dark .keyCells div:nth-child(1).completedKey,
+    .dark .vaultBoxes .box-ilvl:nth-child(1):not(:empty) {
+        background-color: #78d97c;
+    }
+    .dark .keyCells div:nth-child(1),
+    .dark .vaultBoxes .box-ilvl:nth-child(1) {
+        outline-color: #78d97c;
+    }
+
+    .dark .mPlusScore {
+        color: #8a8a8a;
+    }
+
+    .dark .lastWeek {
+        color: #6fb3ff;
+    }
+
+    .dark .empty-state {
+        color: #9a9a9a;
+    }
+
+    .dark .list-footer {
+        border-top: 1px solid #3a3a3a;
+    }
+
+    .dark .theme-toggle {
+        color: #9a9a9a;
+    }
+
+    .dark .theme-toggle:hover {
+        color: #dddddd;
+    }
+
+    .dark .inactive-header {
+        color: #9a9a9a;
+    }
+
+    .dark .inactive-header:hover {
+        color: #dddddd;
+    }
+
+    .dark .inactive-name a {
+        color: #9a9a9a;
+    }
+
+    .dark .inactive-name a:hover {
+        color: #dddddd;
+    }
+
+    .dark .info-block a {
+        color: #7ab8ff;
+    }
+

@@ -21,6 +21,36 @@
 </head>
 <body>
 
+    <!-- One row of the character table. Kept in a template element rather than in
+         index.js so the markup stays with the rest of the html and the project
+         still needs no build step. -->
+    <script type="text/x-template" id="char-row">
+        <div class="charrow pure-u-1">
+            <div class="pure-u-1 pure-u-md-4-24 charNameCell">
+                <div class="pure-u-1-2">
+                    <a v-if="char.rioData.profile_url" :href="char.rioData.profile_url" :style="{ color: classColor }" target="_blank">{{char.fullName}}</a>
+                    <span v-else>{{char.fullName}}</span>
+                </div
+                ><div class="pure-u-1-4">
+                    <div v-if="char.rioData.mythic_plus_scores_by_season" class="mPlusScore">{{Math.round(char.rioData.mythic_plus_scores_by_season[0].scores.all)}}</div>
+                </div
+                ><div class="pure-u-1-4">
+                    <div v-if="char.rioData.mythic_plus_previous_weekly_highest_level_runs[0]" class="lastWeek">{{char.rioData.mythic_plus_previous_weekly_highest_level_runs[0].mythic_level}}</div>
+                    <span v-else>&nbsp;</span>
+                </div
+            ></div
+            ><div class="pure-u-4-24 pure-u-md-4-24 pure-u-1 vaultBoxes"> 
+                <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[0]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[0].mythic_level]?.vault ?? KEY_ILVL_MAP[MAX_KEY_LEVEL].vault}}</template></div>
+                <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[3]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[3].mythic_level]?.vault ?? KEY_ILVL_MAP[MAX_KEY_LEVEL].vault}}</template></div>
+                <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[7]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[7].mythic_level]?.vault ?? KEY_ILVL_MAP[MAX_KEY_LEVEL].vault}}</template></div>
+                </div
+            ><div class="pure-u-1 pure-u-20-24 pure-u-md-16-24 keyCells"
+                ><div v-for="plus in char.rioData.mythic_plus_weekly_highest_level_runs" class="pure-u-md-3-24 completedKey">{{plus.mythic_level}}</div
+                ><div v-for="x in (MAX_KEYS_NEEDED - char.rioData.mythic_plus_weekly_highest_level_runs.length)" class="pure-u-md-3-24"></div
+            ></div>
+        </div>
+    </script>
+
     <div id="vue" v-cloak>
         <div class="center">
             <div class="charlist">
@@ -31,29 +61,34 @@
                     ><div class="pure-u-4-24">Vault Boxes</div
                     ><div class="pure-u-16-24">{{MAX_KEYS_NEEDED}} Best Keys</div>
                 </div>
-                <div v-for="char in allChars" class="charrow pure-u-1">
-                    <div class="pure-u-1 pure-u-md-4-24 charNameCell">
-                        <div class="pure-u-1-2">
-                            <a v-if="char.rioData.profile_url" :href="char.rioData.profile_url" target="_blank">{{char.fullName}}</a>
-                            <span v-else>{{char.fullName}}</span>
-                        </div
-                        ><div class="pure-u-1-4">
-                            <div v-if="char.rioData.mythic_plus_scores_by_season" class="mPlusScore">{{Math.round(char.rioData.mythic_plus_scores_by_season[0].scores.all)}}</div>
-                        </div
-                        ><div class="pure-u-1-4">
-                            <div v-if="char.rioData.mythic_plus_previous_weekly_highest_level_runs[0]" class="lastWeek">{{char.rioData.mythic_plus_previous_weekly_highest_level_runs[0].mythic_level}}</div>
-                            <span v-else>&nbsp;</span>
-                        </div
-                    ></div
-                    ><div class="pure-u-4-24 pure-u-md-4-24 pure-u-1 vaultBoxes"> 
-                        <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[0]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[0].mythic_level]?.vault ?? KEY_ILVL_MAP[MAX_KEY_LEVEL].vault}}</template></div>
-                        <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[3]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[3].mythic_level]?.vault ?? KEY_ILVL_MAP[MAX_KEY_LEVEL].vault}}</template></div>
-                        <div class="box-ilvl pure-u-7-24"><template v-if="char.rioData.mythic_plus_weekly_highest_level_runs[7]">{{KEY_ILVL_MAP[char.rioData.mythic_plus_weekly_highest_level_runs[7].mythic_level]?.vault ?? KEY_ILVL_MAP[MAX_KEY_LEVEL].vault}}</template></div>
-                        </div
-                    ><div class="pure-u-1 pure-u-20-24 pure-u-md-16-24 keyCells"
-                        ><div v-for="plus in char.rioData.mythic_plus_weekly_highest_level_runs" class="pure-u-md-3-24 completedKey">{{plus.mythic_level}}</div
-                        ><div v-for="x in (MAX_KEYS_NEEDED - char.rioData.mythic_plus_weekly_highest_level_runs.length)" class="pure-u-md-3-24"></div
-                    ></div>
+
+                <char-row v-for="char in activeChars" :key="char.name + char.server" :char="char" :dark="dark"></char-row>
+
+                <div class="empty-state pure-u-1" v-if="!activeChars.length">
+                    No one has run a key this season yet.
+                    <div class="empty-hint">
+                        Did the season just start? Everyone's score resets then, and each
+                        character reappears here as soon as they run their first key.
+                    </div>
+                </div>
+
+                <!-- Anyone here who posts a score this season moves up into the list
+                     above on their own, on the next page load. -->
+                <div class="list-footer pure-u-1">
+                    <span class="inactive-header" v-if="inactiveChars.length" @click="showInactive = !showInactive">
+                        <span v-if="showInactive">&#9660;</span><span v-else>&#9654;</span>
+                        {{inactiveChars.length}} inactive
+                    </span>
+                    <a href="#" class="theme-toggle" @click.prevent="toggleTheme">
+                        <i :class="dark ? 'fas fa-sun' : 'fas fa-moon'"></i>
+                        {{dark ? 'classic view' : 'dark view'}}
+                    </a>
+                </div>
+                <div class="inactive-list" v-if="showInactive">
+                    <span v-for="char in inactiveChars" :key="char.name + char.server" class="inactive-name">
+                        <a v-if="char.rioData.profile_url" :href="char.rioData.profile_url" target="_blank">{{char.fullName}}</a>
+                        <span v-else>{{char.fullName}}</span>
+                    </span>
                 </div>
             </div>
         </div>
@@ -69,7 +104,10 @@
                     ><div class="pure-u-8-24">{{ilvl.vault}}-{{ilvl.vtrack}}</div
                 ></div>
             </div>
-        </div>        
+        </div>
+        <div class="center info-block" v-if="lastUpdated">
+            fetched {{lastUpdated.toLocaleTimeString()}} &nbsp;-&nbsp; raider.io data may lag a run by several hours
+        </div>
     </div>
 
 
