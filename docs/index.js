@@ -1,44 +1,53 @@
 !function() {
 
-    // --- BEGIN GENERATED ROSTER - season 18, 2026-08-29 ---
+    // --- BEGIN GENERATED ROSTER - season 18, 2026-09-29 ---
     // Regenerate with: node tools/roster.mjs --write
     // ACTIVE   = ran a key in season 18.
     // INACTIVE = has M+ history but nothing yet this season. The page promotes
     //            these into the main table automatically once they post a score,
     //            so returning players do not need a regeneration.
     var ACTIVE_CHARS = [
-        'Wrokk',
-        'Melic',
-        'Astranyth',
-        'Taliendra',
         'Yubero',
+        'Melic',
         'Asceline',
-        'Rakambo',
-        'Cezsary',
-        'Spunkie',
-        'Uthion',
-        'Kaydon',
-        'Truulegit',
-        'Ockham',
-        'Trulore',
-        'Astr%C3%A6lys',
-        'Trulorre',
         'Nexorcism',
+        'Taliendra',
+        'Astranyth',
+        'Cezsary',
+        'Sudac',
+        'Rakambo',
+        'Uthion',
+        'Drulic',
+        'Ockham',
+        'Wrokk',
+        'Spunkie',
+        'Kaydon',
+        'Monlic',
+        'Astr%C3%A6lys',
+        'Trulore',
+        'Elita',
+        'Truulegit',
+        'Trill',
+        'Pontias',
+        'Truulorr',
+        'Razenezot',
+        'Marsan',
+        'Dargomar',
+        'Yuelai',
+        'Trulorre',
+        'Gimilbeep',
+        'Aescarion',
     ];
 
     var INACTIVE_CHARS = [
-        'Aescarion',
         'Ang%C3%A9lebarthe',
         'Astphaartos',
         'Chao',
         'Cyndahle-Whisperwind',
         'Dhlic',
-        'Drulic',
-        'Elita',
         'Estene',
         'Eumsm',
         'Evoklic',
-        'Gimilbeep',
         'Grandkami',
         'Iriea',
         'Jasuhn',
@@ -47,16 +56,13 @@
         'Marta',
         'Maugis',
         'Melchion',
-        'Monlic',
         'Neito',
         'Nexterminate',
         'Northene',
         'Peppermints',
-        'Pontias',
         'Ragekage',
         'Rebelyel',
         'Sammyjankis',
-        'Sudac',
         'Tao',
         'Thundor',
         'Thusia',
@@ -226,7 +232,7 @@
         // renders without waiting on the inactive bucket behind it.
         var firstWave = [], secondWave = [];
 
-        $.each(ACTIVE_CHARS.concat(MANUAL_CHARS).sort(), function(index, value){
+        $.each(ACTIVE_CHARS.concat(MANUAL_CHARS), function(index, value){
             if (value.length) {
                 var vueChar = makeChar(value, true);
                 vueData.allChars.push(vueChar);
@@ -234,12 +240,19 @@
             }
         });
 
-        $.each(INACTIVE_CHARS.slice().sort(), function(index, value){
+        $.each(INACTIVE_CHARS, function(index, value){
             if (value.length) {
                 var vueChar = makeChar(value, false);
                 vueData.allChars.push(vueChar);
                 secondWave.push(vueChar);
             }
+        });
+
+        // One alphabetical order across every bucket. activeChars and inactiveChars
+        // filter this array, so a character promoted out of the inactive bucket lands
+        // in its alphabetical place rather than after the generated actives.
+        vueData.allChars.sort(function(a, b){
+            return decodeURIComponent(a.name).localeCompare(decodeURIComponent(b.name));
         });
 
         Vue.component('char-row', {
